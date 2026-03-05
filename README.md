@@ -1,16 +1,39 @@
-# React + Vite
+### What is JSX, and why is it used?
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- JSX বা JavaScript XML হলো JavaScript এর একটি syntax extension যেটার মাধ্যমে আমরা JavaScript এর ভিতরেই HTML-like কোড লিখতে পারি। JSX এর মাধ্যমে কোড কে খুব সহজেই read করা যায়। এছাড়াও early ডেভেলপমেন্ট টাইম এ error গুলো কে catch করা এবং reusable কম্পোনেন্ট তৈরী করতে JSX হেল্প করে। এজন্যই JSX ব্যবহার করা হয়।
 
-Currently, two official plugins are available:
+### What is the difference between State and Props?
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Data এক কম্পোনেন্ট থেকে আরেক কম্পোনেন্টে pass করার জন্য Props ব্যবহার করা হয়, যেখানে State এর মাধ্যমে কম্পোনেন্ট এর ভিতরের Data কে ম্যানেজ করা হয়। State এর মান পরিবর্তন করা যায় যেখানে Props এর মান সরাসরি পরিবর্তন করা যায় না। Props কে তার প্যারেন্ট কম্পোনেন্ট কন্ট্রোল করে যেখানে State কে তার নিজস্ব কম্পোনেন্ট কন্ট্রোল করে।
 
-## React Compiler
+### What is the useState hook, and how does it work?
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- useState হলো এমন একটি Hook, যা functional component-এ state (পরিবর্তনশীল ডাটা) ব্যবস্থাপনার জন্য ব্যবহার করা হয়। যখন state পরিবর্তন হয়, তখন React স্বয়ংক্রিয়ভাবে component-টিকে আবার render করে।
+  useState এর Syntax:
+  ```javascript
+  const [state, setState] = useState(initialValue);
+  ```
+  এখানে:
+  state → বর্তমান মান (current value)
+  setState → state আপডেট করার ফাংশন
+  initialValue → state এর প্রাথমিক মান
 
-## Expanding the ESLint configuration
+### How can you share state between components in React?
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React-এ একটি component-এর state অন্য component-এর সাথে শেয়ার করার জন্য সাধারণত “Lifting State Up” পদ্ধতি ব্যবহার করা হয়। অর্থাৎ state-কে common parent component-এ রাখা হয় এবং সেখান থেকে props-এর মাধ্যমে child component-গুলিতে পাঠানো হয়।
+
+### How is event handling done in React?
+
+- React-এ event handling করা হয় JSX element-এ event attribute (যেমন onClick, onChange, onSubmit) ব্যবহার করে এবং সেই event-এর সাথে একটি JavaScript function যুক্ত করে।
+
+```javascript
+function App() {
+  function handleClick() {
+    alert("Button clicked!");
+  }
+
+  return <button onClick={handleClick}>Click Me</button>;
+}
+```
+
+এখানে handleClick() একটি function, onClick event ব্যবহার করা হয়েছে, Button ক্লিক করলে function execute হয়
