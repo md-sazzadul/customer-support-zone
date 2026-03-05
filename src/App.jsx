@@ -17,6 +17,14 @@ function App() {
   const [taskStatusItems, setTaskStatusItems] = useState([]);
   const [resolvedItems, setResolvedItems] = useState([]);
 
+  const handleAddToTask = (ticket) => {
+    const alreadyAdded = taskStatusItems.find((item) => item.id === ticket.id);
+    if (alreadyAdded) return false;
+
+    setTaskStatusItems((prev) => [...prev, ticket]);
+    return true;
+  };
+
   return (
     <>
       <div>
@@ -45,7 +53,11 @@ function App() {
                   <span className="loading loading-dots loading-xl"></span>
                 }
               >
-                <TicketList ticketsPromise={ticketsPromise} />
+                <TicketList
+                  ticketsPromise={ticketsPromise}
+                  onAddToTask={handleAddToTask}
+                  taskStatusItems={taskStatusItems}
+                />
               </Suspense>
             </div>
 

@@ -1,7 +1,7 @@
 import { use } from "react";
 import TicketCard from "../TicketCard/TicketCard";
 
-const TicketList = ({ ticketsPromise }) => {
+const TicketList = ({ ticketsPromise, onAddToTask, taskStatusItems }) => {
   const tickets = use(ticketsPromise);
 
   return (
@@ -10,7 +10,12 @@ const TicketList = ({ ticketsPromise }) => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {tickets.map((ticket) => (
-          <TicketCard key={ticket.id} ticket={ticket} />
+          <TicketCard
+            key={ticket.id}
+            ticket={ticket}
+            onAddToTask={onAddToTask}
+            isAdded={taskStatusItems.some((item) => item.id === ticket.id)}
+          />
         ))}
       </div>
     </div>
