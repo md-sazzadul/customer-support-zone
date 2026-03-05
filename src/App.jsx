@@ -1,4 +1,4 @@
-import { Suspense, useState } from "react";
+import { Suspense, use, useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import Banner from "./component/Banner/Banner";
 import Footer from "./component/Footer/Footer";
@@ -13,10 +13,22 @@ const fetchTickets = async () => {
 
 const ticketsPromise = fetchTickets();
 
-function App() {
-  const [ticketStatuses, setTicketStatuses] = useState({});
-  const [inProgressItems, setInProgressItems] = useState([]);
+function AppContent() {
+  const allTickets = use(ticketsPromise);
+
+  const initialInProgress = allTickets.filter(
+    (t) => t.status === "In-Progress",
+  );
+  const initialStatuses = Object.fromEntries(
+    initialInProgress.map((t) => [t.id, "In-Progress"]),
+  );
+
+  const [ticketStatuses, setTicketStatuses] = useState(initialStatuses);
+  const [inProgressItems, setInProgressItems] = useState(initialInProgress);
   const [resolvedItems, setResolvedItems] = useState([]);
+  const [removedIds, setRemovedIds] = useState(new Set());
+
+  const visibleTickets = allTickets.filter((t) => !removedIds.has(t.id));
 
   const handleCardClick = (ticket) => {
     const overridden = ticketStatuses[ticket.id];
@@ -44,6 +56,7 @@ function App() {
     setTicketStatuses((prev) => ({ ...prev, [ticket.id]: "Resolved" }));
     setInProgressItems((prev) => prev.filter((t) => t.id !== ticket.id));
     setResolvedItems((prev) => [...prev, { ...ticket, status: "Resolved" }]);
+    setRemovedIds((prev) => new Set([...prev, ticket.id]));
     toast.success(`${ticket.title} has been resolved! 🎉`);
   };
 
@@ -69,22 +82,14 @@ function App() {
       <div className="max-w-7xl mx-auto px-6 pb-12">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
           <div className="lg:col-span-2">
-            <Suspense
-              fallback={
-                <div className="text-center py-10 text-gray-400 text-sm">
-                  Loading tickets...
-                </div>
-              }
-            >
-              <TicketList
-                ticketsPromise={ticketsPromise}
-                onCardClick={handleCardClick}
-                ticketStatuses={ticketStatuses}
-              />
-            </Suspense>
+            <TicketList
+              tickets={visibleTickets}
+              onCardClick={handleCardClick}
+              ticketStatuses={ticketStatuses}
+            />
           </div>
 
-          <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-5">
+          <div>
             <TaskStatus
               taskStatusItems={inProgressItems}
               resolvedItems={resolvedItems}
@@ -106,6 +111,20 @@ function App() {
         draggable
       />
     </div>
+  );
+}
+
+function App() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen bg-gray-50 flex items-center justify-center text-gray-400 text-sm">
+          Loading tickets...
+        </div>
+      }
+    >
+      <AppContent />
+    </Suspense>
   );
 }
 
