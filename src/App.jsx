@@ -1,5 +1,6 @@
 import { Suspense } from "react";
 import Banner from "./component/Banner/Banner";
+import Footer from "./component/Footer/Footer";
 import Navbar from "./component/Navbar/Navbar";
 import TaskStatus from "./component/TaskStatus/TaskStatus";
 import TicketList from "./component/TicketList/TicketList";
@@ -41,6 +42,8 @@ function App() {
             </div>
           </div>
         </div>
+
+        <Footer />
       </div>
     </>
   );
