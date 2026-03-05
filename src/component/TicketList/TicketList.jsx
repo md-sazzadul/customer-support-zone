@@ -1,7 +1,7 @@
 import { use } from "react";
 import TicketCard from "../TicketCard/TicketCard";
 
-const TicketList = ({ ticketsPromise, onAddToTask, taskStatusItems }) => {
+const TicketList = ({ ticketsPromise, onCardClick, ticketStatuses }) => {
   const tickets = use(ticketsPromise);
 
   return (
@@ -15,8 +15,8 @@ const TicketList = ({ ticketsPromise, onAddToTask, taskStatusItems }) => {
           <TicketCard
             key={ticket.id}
             ticket={ticket}
-            onAddToTask={onAddToTask}
-            isAdded={taskStatusItems.some((item) => item.id === ticket.id)}
+            onCardClick={onCardClick}
+            ticketStatuses={ticketStatuses}
           />
         ))}
       </div>

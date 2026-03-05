@@ -1,5 +1,5 @@
 import { Suspense, useState } from "react";
-import { ToastContainer } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import Banner from "./component/Banner/Banner";
 import Footer from "./component/Footer/Footer";
 import Navbar from "./component/Navbar/Navbar";
@@ -14,70 +14,87 @@ const fetchTickets = async () => {
 const ticketsPromise = fetchTickets();
 
 function App() {
-  const [taskStatusItems, setTaskStatusItems] = useState([]);
+  const [ticketStatuses, setTicketStatuses] = useState({});
+  const [inProgressItems, setInProgressItems] = useState([]);
   const [resolvedItems, setResolvedItems] = useState([]);
 
-  const handleAddToTask = (ticket) => {
-    const alreadyAdded = taskStatusItems.find((item) => item.id === ticket.id);
-    if (alreadyAdded) return false;
+  const handleCardClick = (ticket) => {
+    const overridden = ticketStatuses[ticket.id];
 
-    setTaskStatusItems((prev) => [...prev, ticket]);
-    return true;
+    if (overridden === "Resolved") {
+      toast.info(`${ticket.title} is already resolved!`, { icon: "ℹ️" });
+      return;
+    }
+
+    const effectiveStatus = overridden || ticket.status;
+    if (effectiveStatus === "In-Progress") {
+      toast.info(`${ticket.title} is already In-Progress!`, { icon: "ℹ️" });
+      return;
+    }
+
+    setTicketStatuses((prev) => ({ ...prev, [ticket.id]: "In-Progress" }));
+    setInProgressItems((prev) => [
+      ...prev,
+      { ...ticket, status: "In-Progress" },
+    ]);
+    toast.success(`${ticket.title} moved to In-Progress!`, { icon: "🔄" });
   };
 
   const handleComplete = (ticket) => {
-    setTaskStatusItems((prev) => prev.filter((t) => t.id !== ticket.id));
-    setResolvedItems((prev) => [...prev, ticket]);
+    setTicketStatuses((prev) => ({ ...prev, [ticket.id]: "Resolved" }));
+    setInProgressItems((prev) => prev.filter((t) => t.id !== ticket.id));
+    setResolvedItems((prev) => [...prev, { ...ticket, status: "Resolved" }]);
+    toast.success(`${ticket.title} has been resolved! 🎉`);
   };
 
   return (
-    <>
-      <div className="min-h-screen bg-gray-50">
-        <Navbar />
+    <div className="min-h-screen bg-gray-50">
+      <Navbar />
 
-        <div className="max-w-7xl mx-auto px-6 pt-8 pb-0">
-          <div className="grid grid-cols-2 gap-5 mb-8">
-            <Banner
-              title="In-Progress"
-              count={taskStatusItems.length}
-              type="progress"
-            />
-            <Banner
-              title="Resolved"
-              count={resolvedItems.length}
-              type="resolved"
-            />
-          </div>
+      <div className="max-w-7xl mx-auto px-6 pt-8 pb-0">
+        <div className="grid grid-cols-2 gap-5 mb-8">
+          <Banner
+            title="In-Progress"
+            count={inProgressItems.length}
+            type="progress"
+          />
+          <Banner
+            title="Resolved"
+            count={resolvedItems.length}
+            type="resolved"
+          />
         </div>
-
-        <div className="max-w-7xl mx-auto px-6 pb-12">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-            <div className="lg:col-span-2">
-              <Suspense
-                fallback={
-                  <span className="loading loading-dots loading-xl"></span>
-                }
-              >
-                <TicketList
-                  ticketsPromise={ticketsPromise}
-                  onAddToTask={handleAddToTask}
-                  taskStatusItems={taskStatusItems}
-                />
-              </Suspense>
-            </div>
-
-            <div>
-              <TaskStatus
-                taskStatusItems={taskStatusItems}
-                resolvedItems={resolvedItems}
-                onComplete={handleComplete}
-              />
-            </div>
-          </div>
-        </div>
-
-        <Footer />
       </div>
+
+      <div className="max-w-7xl mx-auto px-6 pb-12">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+          <div className="lg:col-span-2">
+            <Suspense
+              fallback={
+                <div className="text-center py-10 text-gray-400 text-sm">
+                  Loading tickets...
+                </div>
+              }
+            >
+              <TicketList
+                ticketsPromise={ticketsPromise}
+                onCardClick={handleCardClick}
+                ticketStatuses={ticketStatuses}
+              />
+            </Suspense>
+          </div>
+
+          <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-5">
+            <TaskStatus
+              taskStatusItems={inProgressItems}
+              resolvedItems={resolvedItems}
+              onComplete={handleComplete}
+            />
+          </div>
+        </div>
+      </div>
+
+      <Footer />
 
       <ToastContainer
         position="top-right"
@@ -88,7 +105,7 @@ function App() {
         pauseOnHover
         draggable
       />
-    </>
+    </div>
   );
 }
 

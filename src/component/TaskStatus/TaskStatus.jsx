@@ -1,22 +1,20 @@
-import { toast } from "react-toastify";
-
 const TaskStatus = ({ taskStatusItems, resolvedItems, onComplete }) => {
-  const handleComplete = (ticket) => {
-    onComplete(ticket);
-    toast.success(`${ticket.title} has been resolved! 🎉`);
-  };
-
   return (
     <div>
-      <h2 className="text-base font-bold text-gray-900 mb-4">Task Status</h2>
+      <h2 className="text-base font-bold text-gray-900 mb-1">Task Status</h2>
 
-      {taskStatusItems.length === 0 && (
+      {taskStatusItems.length === 0 ? (
         <p className="text-xs text-gray-400 mb-5">
-          Select a ticket to add to Task Status
+          Click a ticket card to move it to In-Progress
+        </p>
+      ) : (
+        <p className="text-xs text-gray-400 mb-5">
+          {taskStatusItems.length} ticket{taskStatusItems.length > 1 ? "s" : ""}{" "}
+          in progress
         </p>
       )}
 
-      {/* In-Progress Tasks */}
+      {/* In-progress task cards */}
       <div className="flex flex-col gap-3 mb-8">
         {taskStatusItems.map((ticket) => (
           <div
@@ -27,7 +25,7 @@ const TaskStatus = ({ taskStatusItems, resolvedItems, onComplete }) => {
               {ticket.title}
             </p>
             <button
-              onClick={() => handleComplete(ticket)}
+              onClick={() => onComplete(ticket)}
               className="w-full bg-green-500 hover:bg-green-600 active:bg-green-700 text-white font-semibold text-sm py-2 px-4 rounded-lg transition-colors cursor-pointer"
             >
               Complete
@@ -36,7 +34,7 @@ const TaskStatus = ({ taskStatusItems, resolvedItems, onComplete }) => {
         ))}
       </div>
 
-      {/* Resolved Tasks */}
+      {/* Resolved tasks */}
       <h3 className="text-base font-bold text-gray-900 mb-3">Resolved Task</h3>
 
       {resolvedItems.length === 0 ? (
