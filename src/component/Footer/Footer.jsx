@@ -10,14 +10,14 @@ const Footer = () => {
     <footer className="bg-black text-gray-400 pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-6">
         {/* Top Section */}
-        <div className="grid md:grid-cols-6 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-6 gap-10">
           {/* Logo + Description */}
           <div className="md:col-span-2">
-            <h2 className="text-white font-semibold text-lg mb-4">
+            <h2 className="text-white font-bold text-xl mb-4 tracking-tight">
               CS — Ticket System
             </h2>
 
-            <p className="text-sm leading-relaxed max-w-sm">
+            <p className="text-sm leading-relaxed text-gray-400 max-w-xs">
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry. Lorem Ipsum has been the industry’s standard dummy text
               ever since the 1500s.
@@ -26,67 +26,87 @@ const Footer = () => {
 
           {/* Company */}
           <div>
-            <h3 className="text-white font-semibold mb-4">Company</h3>
+            <h3 className="text-white font-semibold text-sm mb-5">Company</h3>
 
-            <ul className="space-y-2 text-sm">
-              <li className="hover:text-white cursor-pointer">About Us</li>
-              <li className="hover:text-white cursor-pointer">Our Mission</li>
-              <li className="hover:text-white cursor-pointer">Contact Sales</li>
+            <ul className="space-y-3 text-sm">
+              {["About Us", "Our Mission", "Contact Sales"].map((item) => (
+                <li
+                  key={item}
+                  className="hover:text-white cursor-pointer transition-colors"
+                >
+                  {item}
+                </li>
+              ))}
             </ul>
           </div>
 
           {/* Services */}
           <div>
-            <h3 className="text-white font-semibold mb-4">Services</h3>
+            <h3 className="text-white font-semibold text-sm mb-5">Services</h3>
 
-            <ul className="space-y-2 text-sm">
-              <li className="hover:text-white cursor-pointer">
-                Products & Services
-              </li>
-              <li className="hover:text-white cursor-pointer">
-                Customer Stories
-              </li>
-              <li className="hover:text-white cursor-pointer">Download Apps</li>
+            <ul className="space-y-3 text-sm">
+              {["Products & Services", "Customer Stories", "Download Apps"].map(
+                (item) => (
+                  <li
+                    key={item}
+                    className="hover:text-white cursor-pointer transition-colors"
+                  >
+                    {item}
+                  </li>
+                ),
+              )}
             </ul>
           </div>
 
           {/* Information */}
           <div>
-            <h3 className="text-white font-semibold mb-4">Information</h3>
+            <h3 className="text-white font-semibold text-sm mb-5">
+              Information
+            </h3>
 
-            <ul className="space-y-2 text-sm">
-              <li className="hover:text-white cursor-pointer">
-                Privacy Policy
-              </li>
-              <li className="hover:text-white cursor-pointer">
-                Terms & Conditions
-              </li>
-              <li className="hover:text-white cursor-pointer">Join Us</li>
+            <ul className="space-y-3 text-sm">
+              {["Privacy Policy", "Terms & Conditions", "Join Us"].map(
+                (item) => (
+                  <li
+                    key={item}
+                    className="hover:text-white cursor-pointer transition-colors"
+                  >
+                    {item}
+                  </li>
+                ),
+              )}
             </ul>
           </div>
 
           {/* Social Links */}
-          <div className="">
-            <h3 className="text-white font-semibold mb-4">Social Links</h3>
+          <div>
+            <h3 className="text-white font-semibold text-sm mb-5">
+              Social Links
+            </h3>
 
             <ul className="space-y-3 text-sm">
-              <li className="flex items-center gap-3 hover:text-white">
-                <FaXTwitter />
+              <li className="flex items-center gap-3 hover:text-white cursor-pointer transition-colors">
+                <span className="flex items-center justify-center w-6 h-6 rounded-full bg-gray-700 text-white text-xs shrink-0">
+                  <FaXTwitter />
+                </span>
                 @CS — Ticket System
               </li>
-
-              <li className="flex items-center gap-3 hover:text-white">
-                <FaLinkedin />
+              <li className="flex items-center gap-3 hover:text-white cursor-pointer transition-colors">
+                <span className="flex items-center justify-center w-6 h-6 rounded-full bg-blue-700 text-white text-xs shrink-0">
+                  <FaLinkedin />
+                </span>
                 @CS — Ticket System
               </li>
-
-              <li className="flex items-center gap-3 hover:text-white">
-                <FaFacebook />
+              <li className="flex items-center gap-3 hover:text-white cursor-pointer transition-colors">
+                <span className="flex items-center justify-center w-6 h-6 rounded-full bg-blue-600 text-white text-xs shrink-0">
+                  <FaFacebook />
+                </span>
                 @CS — Ticket System
               </li>
-
-              <li className="flex items-center gap-3 hover:text-white">
-                <FaEnvelope />
+              <li className="flex items-center gap-3 hover:text-white cursor-pointer transition-colors">
+                <span className="flex items-center justify-center w-6 h-6 rounded-full bg-red-600 text-white text-xs shrink-0">
+                  <FaEnvelope />
+                </span>
                 support@cst.com
               </li>
             </ul>

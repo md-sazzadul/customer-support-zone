@@ -32,11 +32,11 @@ function App() {
 
   return (
     <>
-      <div>
+      <div className="min-h-screen bg-gray-50">
         <Navbar />
 
-        <div className="max-w-7xl mx-auto px-6 py-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+        <div className="max-w-7xl mx-auto px-6 pt-8 pb-0">
+          <div className="grid grid-cols-2 gap-5 mb-8">
             <Banner
               title="In-Progress"
               count={taskStatusItems.length}
@@ -50,8 +50,8 @@ function App() {
           </div>
         </div>
 
-        <div className="max-w-7xl mx-auto p-6">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="max-w-7xl mx-auto px-6 pb-12">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
             <div className="lg:col-span-2">
               <Suspense
                 fallback={
