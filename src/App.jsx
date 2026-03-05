@@ -25,6 +25,11 @@ function App() {
     return true;
   };
 
+  const handleComplete = (ticket) => {
+    setTaskStatusItems((prev) => prev.filter((t) => t.id !== ticket.id));
+    setResolvedItems((prev) => [...prev, ticket]);
+  };
+
   return (
     <>
       <div>
@@ -62,7 +67,11 @@ function App() {
             </div>
 
             <div>
-              <TaskStatus />
+              <TaskStatus
+                taskStatusItems={taskStatusItems}
+                resolvedItems={resolvedItems}
+                onComplete={handleComplete}
+              />
             </div>
           </div>
         </div>
