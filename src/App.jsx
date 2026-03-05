@@ -1,4 +1,4 @@
-import { Suspense } from "react";
+import { Suspense, useState } from "react";
 import Banner from "./component/Banner/Banner";
 import Footer from "./component/Footer/Footer";
 import Navbar from "./component/Navbar/Navbar";
@@ -13,6 +13,9 @@ const fetchTickets = async () => {
 const ticketsPromise = fetchTickets();
 
 function App() {
+  const [taskStatusItems, setTaskStatusItems] = useState([]);
+  const [resolvedItems, setResolvedItems] = useState([]);
+
   return (
     <>
       <div>
