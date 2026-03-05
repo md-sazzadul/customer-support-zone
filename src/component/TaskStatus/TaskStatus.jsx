@@ -1,11 +1,16 @@
 const TaskStatus = ({ taskStatusItems, resolvedItems, onComplete }) => {
   return (
     <div>
-      <h2 className="text-base font-bold text-gray-900 mb-4">Task Status</h2>
+      <h2 className="text-base font-bold text-gray-900 mb-1">Task Status</h2>
 
-      {taskStatusItems.length === 0 && (
+      {taskStatusItems.length === 0 ? (
         <p className="text-xs text-gray-400 mb-5">
           Click a ticket card to move it to In-Progress
+        </p>
+      ) : (
+        <p className="text-xs text-gray-400 mb-5">
+          {taskStatusItems.length} ticket{taskStatusItems.length > 1 ? "s" : ""}{" "}
+          in progress
         </p>
       )}
 

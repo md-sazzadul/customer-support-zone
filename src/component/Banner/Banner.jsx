@@ -9,25 +9,23 @@ const Banner = ({ title, count, type }) => {
 
   return (
     <div
-      className={`relative rounded-2xl px-8 py-10 text-white text-center bg-linear-to-r ${bgColor} overflow-hidden`}
+      className={`relative rounded-2xl px-6 sm:px-8 py-8 sm:py-10 text-white text-center bg-linear-to-r ${bgColor} overflow-hidden`}
     >
-      {/* Vector Background */}
       <img
         src={vector1}
         alt=""
         className="absolute left-0 top-0 h-full pointer-events-none select-none"
       />
-
       <img
         src={vector2}
         alt=""
         className="absolute right-0 top-0 h-full pointer-events-none select-none"
       />
-
-      {/* Content */}
       <div className="relative z-10">
-        <h3 className="text-base font-medium mb-2 opacity-95">{title}</h3>
-        <p className="text-5xl font-bold leading-none">{count}</p>
+        <h3 className="text-sm sm:text-base font-medium mb-2 opacity-95">
+          {title}
+        </h3>
+        <p className="text-4xl sm:text-5xl font-bold leading-none">{count}</p>
       </div>
     </div>
   );

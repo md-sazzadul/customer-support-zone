@@ -39,14 +39,12 @@ const TicketCard = ({ ticket, onCardClick, ticketStatuses }) => {
   return (
     <div
       onClick={() => !isResolved && onCardClick(ticket)}
-      className={`rounded-xl p-4 transition-all duration-150 border shadow-sm
-        ${cardBorder}`}
+      className={`rounded-xl p-4 transition-all duration-150 border shadow-sm ${cardBorder}`}
     >
       <div className="flex justify-between items-start gap-2 mb-2">
         <h3 className="text-sm font-semibold text-gray-900 leading-snug flex-1">
           {ticket.title}
         </h3>
-
         <span
           className={`inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded-full whitespace-nowrap shrink-0 ${statusClasses}`}
         >
@@ -57,7 +55,7 @@ const TicketCard = ({ ticket, onCardClick, ticketStatuses }) => {
 
       <p className="text-xs text-gray-500 leading-relaxed mb-4">{shortDesc}</p>
 
-      <div className="flex justify-between items-center text-xs">
+      <div className="flex flex-wrap justify-between items-center text-xs gap-y-2">
         <div className="flex items-center gap-2">
           <span className="text-gray-400">#{ticket.id}</span>
           <span
@@ -66,7 +64,7 @@ const TicketCard = ({ ticket, onCardClick, ticketStatuses }) => {
             {ticket.priority} priority
           </span>
         </div>
-        <div className="flex items-center gap-3 text-gray-400">
+        <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-gray-400">
           <span>{ticket.customer}</span>
           <span className="flex items-center gap-1">
             <span>📅</span>

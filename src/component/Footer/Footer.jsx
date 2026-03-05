@@ -7,27 +7,25 @@ import {
 
 const Footer = () => {
   return (
-    <footer className="bg-black text-gray-400 pt-16 pb-8">
-      <div className="max-w-7xl mx-auto px-6">
+    <footer className="bg-black text-gray-400 pt-12 pb-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Top Section */}
-        <div className="grid grid-cols-1 md:grid-cols-6 gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-8 lg:gap-10">
           {/* Logo + Description */}
-          <div className="md:col-span-2">
+          <div className="sm:col-span-2 lg:col-span-2">
             <h2 className="text-white font-bold text-xl mb-4 tracking-tight">
               CS — Ticket System
             </h2>
-
             <p className="text-sm leading-relaxed text-gray-400 max-w-xs">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry’s standard dummy text
-              ever since the 1500s.
+              We help support teams stay on top of customer issues — from the
+              first report to full resolution. Fast, organised, and built for
+              real workflows.
             </p>
           </div>
 
           {/* Company */}
           <div>
             <h3 className="text-white font-semibold text-sm mb-5">Company</h3>
-
             <ul className="space-y-3 text-sm">
               {["About Us", "Our Mission", "Contact Sales"].map((item) => (
                 <li
@@ -43,7 +41,6 @@ const Footer = () => {
           {/* Services */}
           <div>
             <h3 className="text-white font-semibold text-sm mb-5">Services</h3>
-
             <ul className="space-y-3 text-sm">
               {["Products & Services", "Customer Stories", "Download Apps"].map(
                 (item) => (
@@ -63,7 +60,6 @@ const Footer = () => {
             <h3 className="text-white font-semibold text-sm mb-5">
               Information
             </h3>
-
             <ul className="space-y-3 text-sm">
               {["Privacy Policy", "Terms & Conditions", "Join Us"].map(
                 (item) => (
@@ -83,25 +79,24 @@ const Footer = () => {
             <h3 className="text-white font-semibold text-sm mb-5">
               Social Links
             </h3>
-
             <ul className="space-y-3 text-sm">
               <li className="flex items-center gap-3 hover:text-white cursor-pointer transition-colors">
                 <span className="flex items-center justify-center w-6 h-6 rounded-full bg-gray-700 text-white text-xs shrink-0">
                   <FaXTwitter />
                 </span>
-                @CS — Ticket System
+                @CS_Tickets
               </li>
               <li className="flex items-center gap-3 hover:text-white cursor-pointer transition-colors">
                 <span className="flex items-center justify-center w-6 h-6 rounded-full bg-blue-700 text-white text-xs shrink-0">
                   <FaLinkedin />
                 </span>
-                @CS — Ticket System
+                CS Ticket System
               </li>
               <li className="flex items-center gap-3 hover:text-white cursor-pointer transition-colors">
                 <span className="flex items-center justify-center w-6 h-6 rounded-full bg-blue-600 text-white text-xs shrink-0">
                   <FaFacebook />
                 </span>
-                @CS — Ticket System
+                CS Ticket System
               </li>
               <li className="flex items-center gap-3 hover:text-white cursor-pointer transition-colors">
                 <span className="flex items-center justify-center w-6 h-6 rounded-full bg-red-600 text-white text-xs shrink-0">
@@ -114,7 +109,7 @@ const Footer = () => {
         </div>
 
         {/* Divider */}
-        <div className="border-t border-gray-800 mt-12 pt-6 text-center text-sm text-gray-500">
+        <div className="border-t border-gray-800 mt-10 pt-6 text-center text-sm text-gray-500">
           © 2025 CS — Ticket System. All rights reserved.
         </div>
       </div>
