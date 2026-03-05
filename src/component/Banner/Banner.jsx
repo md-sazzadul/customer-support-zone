@@ -15,13 +15,13 @@ const Banner = ({ title, count, type }) => {
       <img
         src={vector1}
         alt=""
-        className="absolute left-0 top-0 h-full opacity-40 pointer-events-none"
+        className="absolute left-0 top-0 h-full pointer-events-none"
       />
 
       <img
         src={vector2}
         alt=""
-        className="absolute right-0 top-0 h-full opacity-40 pointer-events-none"
+        className="absolute right-0 top-0 h-full pointer-events-none"
       />
 
       {/* Content */}

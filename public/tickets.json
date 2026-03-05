@@ -5,7 +5,7 @@
     "description": "Customer is unable to log in to their account despite resetting the password multiple times.",
     "customer": "John Smith",
     "priority": "high",
-    "status": "open",
+    "status": "Open",
     "createdAt": "2024-01-15"
   },
   {
@@ -14,7 +14,7 @@
     "description": "Payment keeps failing despite sufficient balance in the customer's card.",
     "customer": "Sarah Johnson",
     "priority": "high",
-    "status": "open",
+    "status": "Open",
     "createdAt": "2024-01-16"
   },
   {
@@ -23,7 +23,7 @@
     "description": "Customer cannot download their invoice from the billing section.",
     "customer": "Michael Brown",
     "priority": "medium",
-    "status": "in-progress",
+    "status": "In-Progress",
     "createdAt": "2024-01-17"
   },
   {
@@ -32,7 +32,7 @@
     "description": "Billing address displayed in the account is outdated despite recent update.",
     "customer": "Emily Davis",
     "priority": "low",
-    "status": "open",
+    "status": "Open",
     "createdAt": "2024-01-18"
   },
   {
@@ -41,7 +41,7 @@
     "description": "Mobile application crashes immediately after opening on Android devices.",
     "customer": "David Wilson",
     "priority": "high",
-    "status": "open",
+    "status": "Open",
     "createdAt": "2024-01-19"
   },
   {
@@ -50,7 +50,7 @@
     "description": "Customer requested a refund two weeks ago but has not received the amount yet.",
     "customer": "Sophia Taylor",
     "priority": "medium",
-    "status": "in-progress",
+    "status": "In-Progress",
     "createdAt": "2024-01-20"
   },
   {
@@ -59,7 +59,7 @@
     "description": "Customer is not receiving 2FA verification codes on their phone.",
     "customer": "James Anderson",
     "priority": "high",
-    "status": "open",
+    "status": "Open",
     "createdAt": "2024-01-21"
   },
   {
@@ -68,7 +68,7 @@
     "description": "Uploading a profile picture results in an 'Upload failed' error.",
     "customer": "Olivia Martinez",
     "priority": "low",
-    "status": "open",
+    "status": "Open",
     "createdAt": "2024-01-22"
   },
   {
@@ -77,7 +77,7 @@
     "description": "Subscription did not renew automatically despite auto-renew being enabled.",
     "customer": "Liam Thomas",
     "priority": "medium",
-    "status": "in-progress",
+    "status": "In-Progress",
     "createdAt": "2024-01-23"
   },
   {
@@ -86,7 +86,7 @@
     "description": "Customer placed an order but did not receive confirmation email.",
     "customer": "Isabella Garcia",
     "priority": "medium",
-    "status": "open",
+    "status": "Open",
     "createdAt": "2024-01-24"
   },
   {
@@ -95,7 +95,7 @@
     "description": "Password reset link expires immediately after clicking.",
     "customer": "William Harris",
     "priority": "high",
-    "status": "open",
+    "status": "Open",
     "createdAt": "2024-01-25"
   },
   {
@@ -104,7 +104,7 @@
     "description": "Dashboard takes more than 10 seconds to load after login.",
     "customer": "Charlotte Clark",
     "priority": "medium",
-    "status": "in-progress",
+    "status": "In-Progress",
     "createdAt": "2024-01-26"
   },
   {
@@ -113,7 +113,7 @@
     "description": "Global search returns empty results even for valid queries.",
     "customer": "Benjamin Lewis",
     "priority": "high",
-    "status": "open",
+    "status": "Open",
     "createdAt": "2024-01-27"
   },
   {
@@ -122,7 +122,7 @@
     "description": "Changes to profile information revert after page refresh.",
     "customer": "Amelia Walker",
     "priority": "low",
-    "status": "open",
+    "status": "Open",
     "createdAt": "2024-01-28"
   },
   {
@@ -131,7 +131,7 @@
     "description": "Customer does not receive any notification emails from the system.",
     "customer": "Daniel Hall",
     "priority": "medium",
-    "status": "in-progress",
+    "status": "In-Progress",
     "createdAt": "2024-01-29"
   }
 ]
